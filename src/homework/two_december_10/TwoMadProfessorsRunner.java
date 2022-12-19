@@ -6,8 +6,6 @@ import java.util.Random;
 
 public class TwoMadProfessorsRunner {
 
-    public static final String[] ROBOT_PARTS = {"Head", "Body", "Left hand", "Right hand", "Left leg", "Right leg",
-            "CPU", "RAM", "HDD"};
     public static final int INITIAL_FACTORY_WASTE_DUMP_CAPACITY = 20;
     public static final String INITIAL_PART_LIST = "INITIAL PART LIST";
     public static final String WASTE_DUMP = "WASTE DUMP";
@@ -21,7 +19,8 @@ public class TwoMadProfessorsRunner {
 
         List<String> initialPartsList = new ArrayList<>(INITIAL_FACTORY_WASTE_DUMP_CAPACITY);
         for (int i = 0; i < INITIAL_FACTORY_WASTE_DUMP_CAPACITY; i++) {
-            initialPartsList.add(ROBOT_PARTS[new Random().nextInt(ROBOT_PARTS.length)]);
+            initialPartsList.add(RobotPartsWasteDump
+                    .ROBOT_PARTS[new Random().nextInt(RobotPartsWasteDump.ROBOT_PARTS.length)]);
         }
 
         System.out.println(INITIAL_PART_LIST);
