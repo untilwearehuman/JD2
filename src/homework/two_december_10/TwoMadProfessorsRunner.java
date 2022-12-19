@@ -60,11 +60,13 @@ public class TwoMadProfessorsRunner {
         }
 
         if (minion1.getRobotsAssembled() > minion2.getRobotsAssembled()) {
-            System.out.println(THE_WINNER_IS + thread2.getName() + NUMBER_OF_ROBOTS_ASSEMBLED_IS + minion1.getRobotsAssembled());
+            System.out.println(THE_WINNER_IS + thread2.getName() +
+                    NUMBER_OF_ROBOTS_ASSEMBLED_IS + minion1.getRobotsAssembled());
         } else if (minion1.getRobotsAssembled() == minion2.getRobotsAssembled()) {
             System.out.println(DRAW_ROBOTS_ASSEMBLED + minion1.getRobotsAssembled());
         } else {
-            System.out.println(THE_WINNER_IS + thread3.getName() + NUMBER_OF_ROBOTS_ASSEMBLED_IS + minion2.getRobotsAssembled());
+            System.out.println(THE_WINNER_IS + thread3.getName() +
+                    NUMBER_OF_ROBOTS_ASSEMBLED_IS + minion2.getRobotsAssembled());
         }
 
     }

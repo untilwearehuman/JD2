@@ -7,7 +7,7 @@ public class RobotPartsWasteDump {
 
     public static final String[] ROBOT_PARTS = {"Head", "Body", "Left hand", "Right hand", "Left leg", "Right leg",
             "CPU", "RAM", "HDD"};
-    public static final int ONE_NIGHT_LENGHT = 100;
+    public static final int ONE_NIGHT_LENGTH = 100;
     private volatile long timePassed = 0;
     private final long timeOfHundredNights = 10_000L;
 
@@ -48,7 +48,7 @@ public class RobotPartsWasteDump {
             if (!isInterrupt()) {
                 partList.add(ROBOT_PARTS[new Random().nextInt(ROBOT_PARTS.length)]);
 
-                timePassed = timePassed + ONE_NIGHT_LENGHT;
+                timePassed = timePassed + ONE_NIGHT_LENGTH;
 //            System.out.println("QUEUE : TIME PASSED " + timePassed);
             }
         }

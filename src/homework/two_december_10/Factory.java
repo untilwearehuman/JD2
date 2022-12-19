@@ -36,8 +36,10 @@ public class Factory implements Runnable {
             }
         }
 
-        //System.out.println("FACTORY : " + Thread.currentThread().getName() + " Parts at the Waste Dump " + partsWasteDump.getPartList());
-        System.out.println(Thread.currentThread().getName() + GET_TIME_PASSED + partsWasteDump.getTimePassed());
+        //System.out.println("FACTORY : " + Thread.currentThread().getName() +
+        // " Parts at the Waste Dump " + partsWasteDump.getPartList());
+        System.out.println(Thread.currentThread().getName() + GET_TIME_PASSED +
+                partsWasteDump.getTimePassed()/RobotPartsWasteDump.ONE_NIGHT_LENGTH + " nights");
 
     }
 }

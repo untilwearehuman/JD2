@@ -63,7 +63,8 @@ public class Minion implements Runnable {
         }
 
 //        System.out.println("MINION : " + Thread.currentThread().getName() + " collected parts " + professorPartList);
-        System.out.println(Thread.currentThread().getName() + GET_TIME_PASSED + partsWasteDump.getTimePassed());
+        System.out.println(Thread.currentThread().getName() + GET_TIME_PASSED +
+                partsWasteDump.getTimePassed()/RobotPartsWasteDump.ONE_NIGHT_LENGTH + " nights");
 
         CalculateMaxNumberRobotsToAssemble robotsToAssemble = new CalculateMaxNumberRobotsToAssemble();
         robotsAssembled = robotsToAssemble.getRobotsQuantity(professorPartList);
