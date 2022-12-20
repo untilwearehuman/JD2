@@ -8,12 +8,12 @@ public class RobotPartsWasteDump {
     public static final String[] ROBOT_PARTS = {"Head", "Body", "Left hand", "Right hand", "Left leg", "Right leg",
             "CPU", "RAM", "HDD"};
     public static final int ONE_NIGHT_LENGTH = 100;
-    private volatile long timePassed = 0;
-    private final long timeOfHundredNights = 10_000L;
-
+    public static final int TIME_OF_100_NIGHTS = 10000;
+    public static final String NIGHTS = " nights";
+    public static final String TIME_PASSED = "TIME PASSED ";
+    private volatile int timePassed = 0;
     private volatile String collectedPart;
     private final List<String> partList;
-    private volatile boolean interrupt;
 
     public RobotPartsWasteDump(List<String> partList) {
         this.partList = partList;
@@ -27,36 +27,22 @@ public class RobotPartsWasteDump {
         return partList;
     }
 
-    public long getTimePassed() {
+    public int getTimePassed() {
         return timePassed;
     }
 
-    public long getTimeOfHundredNights() {
-        return timeOfHundredNights;
-    }
-
-    public boolean isInterrupt() {
-        return interrupt;
-    }
-
-    public void setInterrupt(boolean interrupt) {
-        this.interrupt = interrupt;
-    }
-
     public synchronized void throwPartToDump() throws InterruptedException {
-        if (timePassed < timeOfHundredNights) {
-            if (!isInterrupt()) {
-                partList.add(ROBOT_PARTS[new Random().nextInt(ROBOT_PARTS.length)]);
+        if (timePassed < TIME_OF_100_NIGHTS) {
+            partList.add(ROBOT_PARTS[new Random().nextInt(ROBOT_PARTS.length)]);
 
-                timePassed = timePassed + ONE_NIGHT_LENGTH;
-//            System.out.println("QUEUE : TIME PASSED " + timePassed);
-            }
+            timePassed = timePassed + ONE_NIGHT_LENGTH;
+            System.out.println(TIME_PASSED + timePassed/ONE_NIGHT_LENGTH + NIGHTS);
         }
         notifyAll();
     }
 
     public synchronized void takePartFromDump() {
-        if (timePassed < timeOfHundredNights) {
+        if (timePassed < TIME_OF_100_NIGHTS) {
             while (getPartList().size() < 1) {
 
                 try {
@@ -66,10 +52,8 @@ public class RobotPartsWasteDump {
                 }
 
             }
-            if (!isInterrupt()) {
-                collectedPart = partList.get(0);
-                partList.remove(0);
-            }
+            collectedPart = partList.get(0);
+            partList.remove(0);
         }
     }
 }

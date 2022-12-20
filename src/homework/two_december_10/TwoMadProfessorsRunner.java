@@ -11,9 +11,9 @@ public class TwoMadProfessorsRunner {
     public static final String WASTE_DUMP = "WASTE DUMP";
     public static final String PROFESSOR_1 = "Professor 1";
     public static final String PROFESSOR_2 = "Professor 2";
-    public static final String THE_WINNER_IS = "The winner is ";
+    public static final String THE_WINNER_IS = "\nThe winner is ";
     public static final String NUMBER_OF_ROBOTS_ASSEMBLED_IS = ". Number of robots assembled is ";
-    public static final String DRAW_ROBOTS_ASSEMBLED = "DRAW! All the professors assembled same number of robots : ";
+    public static final String DRAW_ROBOTS_ASSEMBLED = "\nDRAW! Both professors assembled same number of robots : ";
 
     public static void main(String[] args) {
 
@@ -53,8 +53,7 @@ public class TwoMadProfessorsRunner {
         thread3.start();
 
         try {
-            thread3.join();
-            Thread.sleep(1000);
+            Thread.sleep(RobotPartsWasteDump.TIME_OF_100_NIGHTS);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
