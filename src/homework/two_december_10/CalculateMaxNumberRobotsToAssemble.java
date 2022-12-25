@@ -12,7 +12,7 @@ public class CalculateMaxNumberRobotsToAssemble {
                 .collect(Collectors.toMap(e -> e, e -> 1, Integer::sum));
 
         Map.Entry<String, Integer> minNumberOfParts = frequencyPartsRepeat.entrySet().stream()
-                .min(Comparator.comparing(Map.Entry::getValue)).orElseThrow();
+                .min(Map.Entry.comparingByValue()).orElseThrow();
 
         return minNumberOfParts.getValue();
 

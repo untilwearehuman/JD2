@@ -6,6 +6,8 @@ public class Factory implements Runnable {
 
     public static final String INTERRUPTED_MESSAGE = "Thread %s was interrupted%n";
     public static final String GET_TIME_PASSED = " getTimePassed : ";
+    public static final int BOUND = 4;
+    public static final int SLEEP_MILLIS = 100;
     private RobotPartsWasteDump partsWasteDump;
 
     public Factory(RobotPartsWasteDump partsWasteDump) {
@@ -16,10 +18,10 @@ public class Factory implements Runnable {
     public void run() {
         while (partsWasteDump.getTimePassed() < RobotPartsWasteDump.TIME_OF_100_NIGHTS) {
             try {
-                for (int i = 0; i < (new Random().nextInt(4) + 1); i++) {
+                for (int i = 0; i < (new Random().nextInt(BOUND) + 1); i++) {
                     partsWasteDump.throwPartToDump();
                 }
-                Thread.sleep(100);
+                Thread.sleep(SLEEP_MILLIS);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

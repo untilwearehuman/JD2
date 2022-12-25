@@ -10,6 +10,10 @@ public class Minion implements Runnable {
     public static final String ASSEMBLED = " assembled ";
     public static final String ROBOTS = " robots";
     public static final String INTERRUPTED_MESSAGE = "Thread %s was interrupted%n";
+    public static final int PARTS_BOUND = 4;
+    public static final int SLEEP_MILLIS = 100;
+    public static final String TOOK = "%s took %s%n";
+    public static final String NIGHTS_N = "%s%s%d nights%n";
     private RobotPartsWasteDump partsWasteDump;
     private List<String> professorPartList;
     private int robotsAssembled;
@@ -28,31 +32,31 @@ public class Minion implements Runnable {
         while (partsWasteDump.getTimePassed() < RobotPartsWasteDump.TIME_OF_100_NIGHTS) {
             try {
 
-                if (partsWasteDump.getPartList().size() >= 4) {
+                if (partsWasteDump.getPartList().size() >= PARTS_BOUND) {
                     for (int i = 0; i < (new Random().nextInt(BOUND) + 1); i++) {
                         partsWasteDump.takePartFromDump();
                         professorPartList.add(partsWasteDump.getCollectedPart());
 
-                        System.out.println(Thread.currentThread().getName() + " took " + partsWasteDump.getCollectedPart());
+                        System.out.printf(TOOK, Thread.currentThread().getName(), partsWasteDump.getCollectedPart());
 
                     }
                 } else {
                     for (int i = 0; i < (new Random().nextInt(partsWasteDump.getPartList().size() + 1)); i++) {
                         partsWasteDump.takePartFromDump();
                         professorPartList.add(partsWasteDump.getCollectedPart());
-                        System.out.println(Thread.currentThread().getName() + " took " + partsWasteDump.getCollectedPart());
+                        System.out.printf(TOOK, Thread.currentThread().getName(), partsWasteDump.getCollectedPart());
                     }
                 }
 
-                Thread.sleep(100);
+                Thread.sleep(SLEEP_MILLIS);
 
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
 
-        System.out.println(Thread.currentThread().getName() + GET_TIME_PASSED +
-                partsWasteDump.getTimePassed() / RobotPartsWasteDump.ONE_NIGHT_LENGTH + " nights");
+        System.out.printf(NIGHTS_N, Thread.currentThread().getName(), GET_TIME_PASSED,
+                partsWasteDump.getTimePassed() / RobotPartsWasteDump.ONE_NIGHT_LENGTH);
 
         CalculateMaxNumberRobotsToAssemble robotsToAssemble = new CalculateMaxNumberRobotsToAssemble();
         robotsAssembled = robotsToAssemble.getRobotsQuantity(professorPartList);
