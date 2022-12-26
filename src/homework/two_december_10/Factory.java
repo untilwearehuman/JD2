@@ -8,6 +8,7 @@ public class Factory implements Runnable {
     public static final String GET_TIME_PASSED = " getTimePassed : ";
     public static final int BOUND = 4;
     public static final int SLEEP_MILLIS = 100;
+    public static final String NIGHTS = " nights";
     private RobotPartsWasteDump partsWasteDump;
 
     public Factory(RobotPartsWasteDump partsWasteDump) {
@@ -28,7 +29,7 @@ public class Factory implements Runnable {
         }
 
         System.out.println(Thread.currentThread().getName() + GET_TIME_PASSED +
-                partsWasteDump.getTimePassed() / RobotPartsWasteDump.ONE_NIGHT_LENGTH + " nights");
+                partsWasteDump.getTimePassed() / RobotPartsWasteDump.ONE_NIGHT_LENGTH + NIGHTS);
 
     }
 }

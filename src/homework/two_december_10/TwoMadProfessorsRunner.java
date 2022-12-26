@@ -17,7 +17,7 @@ public class TwoMadProfessorsRunner {
 
     public static void main(String[] args) {
 
-        List<String> initialPartsList = new ArrayList<>(INITIAL_FACTORY_WASTE_DUMP_CAPACITY);
+        List<String> initialPartsList = new ArrayList<>();
         for (int i = 0; i < INITIAL_FACTORY_WASTE_DUMP_CAPACITY; i++) {
             initialPartsList.add(RobotPartsWasteDump
                     .ROBOT_PARTS[new Random().nextInt(RobotPartsWasteDump.ROBOT_PARTS.length)]);
@@ -58,6 +58,11 @@ public class TwoMadProfessorsRunner {
             e.printStackTrace();
         }
 
+        chooseTheWiner(minion1, minion2, thread2, thread3);
+
+    }
+
+    private static void chooseTheWiner(Minion minion1, Minion minion2, Thread thread2, Thread thread3) {
         if (minion1.getRobotsAssembled() > minion2.getRobotsAssembled()) {
             System.out.println(THE_WINNER_IS + thread2.getName() +
                     NUMBER_OF_ROBOTS_ASSEMBLED_IS + minion1.getRobotsAssembled());
@@ -67,6 +72,5 @@ public class TwoMadProfessorsRunner {
             System.out.println(THE_WINNER_IS + thread3.getName() +
                     NUMBER_OF_ROBOTS_ASSEMBLED_IS + minion2.getRobotsAssembled());
         }
-
     }
 }
