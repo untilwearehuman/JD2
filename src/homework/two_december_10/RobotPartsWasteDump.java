@@ -31,12 +31,12 @@ public class RobotPartsWasteDump {
         return timePassed;
     }
 
-    public synchronized void throwPartToDump() throws InterruptedException {
+    public synchronized void throwPartToDump() {
         if (timePassed < TIME_OF_100_NIGHTS) {
             partList.add(ROBOT_PARTS[new Random().nextInt(ROBOT_PARTS.length)]);
 
             timePassed = timePassed + ONE_NIGHT_LENGTH;
-            System.out.println(TIME_PASSED + timePassed/ONE_NIGHT_LENGTH + NIGHTS);
+            System.out.println(TIME_PASSED + timePassed / ONE_NIGHT_LENGTH + NIGHTS);
         }
         notifyAll();
     }
