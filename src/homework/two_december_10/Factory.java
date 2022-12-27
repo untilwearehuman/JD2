@@ -20,6 +20,7 @@ public class Factory implements Runnable {
     public void run() {
         while (partsWasteDump.getTimePassed() < RobotPartsWasteDump.TIME_OF_100_NIGHTS) {
             try {
+                Thread.sleep(SLEEP_MILLIS);
                 for (int i = 0; i < (new Random().nextInt(BOUND) + 1); i++) {
                     partsWasteDump.throwPartToDump();
                     System.out.println("NIGHT : " +

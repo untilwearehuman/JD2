@@ -9,7 +9,7 @@ public class RobotPartsWasteDump {
             "CPU", "RAM", "HDD"};
     public static final int ONE_NIGHT_LENGTH = 100;
     public static final int TIME_OF_100_NIGHTS = 10000;
-    private volatile int timePassed = 0;
+    private volatile int timePassed = 1;
     private volatile String wastedPart;
     private volatile String collectedPart;
     private final List<String> partList;
