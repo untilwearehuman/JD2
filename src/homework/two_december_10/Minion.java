@@ -14,8 +14,8 @@ public class Minion implements Runnable {
     public static final int SLEEP_MILLIS = 100;
     public static final String TOOK = "%s took %s%n";
     public static final String NIGHTS_N = "%s%s%d nights%n";
-    private RobotPartsWasteDump partsWasteDump;
-    private List<String> professorPartList;
+    private final RobotPartsWasteDump partsWasteDump;
+    private final List<String> professorPartList;
     private int robotsAssembled;
 
     public Minion(RobotPartsWasteDump partsWasteDump, List<String> professorPartList) {

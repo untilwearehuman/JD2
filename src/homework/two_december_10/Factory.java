@@ -10,7 +10,7 @@ public class Factory implements Runnable {
     public static final int BOUND = 4;
     public static final int SLEEP_MILLIS = 100;
     public static final String NIGHTS = " nights";
-    private RobotPartsWasteDump partsWasteDump;
+    private final RobotPartsWasteDump partsWasteDump;
 
     public Factory(RobotPartsWasteDump partsWasteDump) {
         this.partsWasteDump = partsWasteDump;
