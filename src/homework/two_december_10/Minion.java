@@ -38,13 +38,16 @@ public class Minion implements Runnable {
                         professorPartList.add(partsWasteDump.getCollectedPart());
 
                         System.out.printf(TOOK, Thread.currentThread().getName(), partsWasteDump.getCollectedPart());
-
+//                        System.out.printf(NIGHTS_N, Thread.currentThread().getName(), GET_TIME_PASSED,
+//                                partsWasteDump.getTimePassed() / RobotPartsWasteDump.ONE_NIGHT_LENGTH);
                     }
                 } else {
                     for (int i = 0; i < (new Random().nextInt(partsWasteDump.getPartList().size() + 1)); i++) {
                         partsWasteDump.takePartFromDump();
                         professorPartList.add(partsWasteDump.getCollectedPart());
                         System.out.printf(TOOK, Thread.currentThread().getName(), partsWasteDump.getCollectedPart());
+//                        System.out.printf(NIGHTS_N, Thread.currentThread().getName(), GET_TIME_PASSED,
+//                                partsWasteDump.getTimePassed() / RobotPartsWasteDump.ONE_NIGHT_LENGTH);
                     }
                 }
 

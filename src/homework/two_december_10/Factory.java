@@ -21,6 +21,8 @@ public class Factory implements Runnable {
             try {
                 for (int i = 0; i < (new Random().nextInt(BOUND) + 1); i++) {
                     partsWasteDump.throwPartToDump();
+//                    System.out.println(Thread.currentThread().getName() + GET_TIME_PASSED +
+//                            partsWasteDump.getTimePassed() / RobotPartsWasteDump.ONE_NIGHT_LENGTH + NIGHTS);
                 }
                 Thread.sleep(SLEEP_MILLIS);
             } catch (InterruptedException e) {
