@@ -5,7 +5,8 @@ import java.util.Random;
 public class Factory implements Runnable {
 
     public static final String INTERRUPTED_MESSAGE = "Thread %s was interrupted%n";
-    public static final String GET_TIME_PASSED = " getTimePassed : ";
+    public static final String TIME_PASSED = " : Time Passed : ";
+    public static final String NIGHT_NUMBER = " : NIGHT NUMBER : ";
     public static final int BOUND = 4;
     public static final int SLEEP_MILLIS = 100;
     public static final String NIGHTS = " nights";
@@ -21,8 +22,10 @@ public class Factory implements Runnable {
             try {
                 for (int i = 0; i < (new Random().nextInt(BOUND) + 1); i++) {
                     partsWasteDump.throwPartToDump();
-//                    System.out.println(Thread.currentThread().getName() + GET_TIME_PASSED +
-//                            partsWasteDump.getTimePassed() / RobotPartsWasteDump.ONE_NIGHT_LENGTH + NIGHTS);
+                    System.out.println("NIGHT : " +
+                            partsWasteDump.getTimePassed() / RobotPartsWasteDump.ONE_NIGHT_LENGTH +
+                            " : " + Thread.currentThread().getName() + " : WASTED PART : " +
+                            partsWasteDump.getWastedPart());
                 }
                 Thread.sleep(SLEEP_MILLIS);
             } catch (InterruptedException e) {
@@ -30,7 +33,7 @@ public class Factory implements Runnable {
             }
         }
 
-        System.out.println(Thread.currentThread().getName() + GET_TIME_PASSED +
+        System.out.println(Thread.currentThread().getName() + TIME_PASSED +
                 partsWasteDump.getTimePassed() / RobotPartsWasteDump.ONE_NIGHT_LENGTH + NIGHTS);
 
     }

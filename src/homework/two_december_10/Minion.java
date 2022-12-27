@@ -6,7 +6,7 @@ import java.util.Random;
 public class Minion implements Runnable {
 
     public static final int BOUND = 4;
-    public static final String GET_TIME_PASSED = " getTimePassed : ";
+    public static final String TIME_PASSED = " : Time Passed : ";
     public static final String ASSEMBLED = " assembled ";
     public static final String ROBOTS = " robots";
     public static final String INTERRUPTED_MESSAGE = "Thread %s was interrupted%n";
@@ -36,18 +36,19 @@ public class Minion implements Runnable {
                     for (int i = 0; i < (new Random().nextInt(BOUND) + 1); i++) {
                         partsWasteDump.takePartFromDump();
                         professorPartList.add(partsWasteDump.getCollectedPart());
-
-                        System.out.printf(TOOK, Thread.currentThread().getName(), partsWasteDump.getCollectedPart());
-//                        System.out.printf(NIGHTS_N, Thread.currentThread().getName(), GET_TIME_PASSED,
-//                                partsWasteDump.getTimePassed() / RobotPartsWasteDump.ONE_NIGHT_LENGTH);
+                        System.out.println("NIGHT : " +
+                                partsWasteDump.getTimePassed() / RobotPartsWasteDump.ONE_NIGHT_LENGTH +
+                                " : " + Thread.currentThread().getName() + " : TAKEN PART : " +
+                                partsWasteDump.getCollectedPart());
                     }
                 } else {
                     for (int i = 0; i < (new Random().nextInt(partsWasteDump.getPartList().size() + 1)); i++) {
                         partsWasteDump.takePartFromDump();
                         professorPartList.add(partsWasteDump.getCollectedPart());
-                        System.out.printf(TOOK, Thread.currentThread().getName(), partsWasteDump.getCollectedPart());
-//                        System.out.printf(NIGHTS_N, Thread.currentThread().getName(), GET_TIME_PASSED,
-//                                partsWasteDump.getTimePassed() / RobotPartsWasteDump.ONE_NIGHT_LENGTH);
+                        System.out.println("NIGHT : " +
+                                partsWasteDump.getTimePassed() / RobotPartsWasteDump.ONE_NIGHT_LENGTH +
+                                " : " + Thread.currentThread().getName() + " : TAKEN PART : " +
+                                partsWasteDump.getCollectedPart());
                     }
                 }
 
@@ -58,7 +59,7 @@ public class Minion implements Runnable {
             }
         }
 
-        System.out.printf(NIGHTS_N, Thread.currentThread().getName(), GET_TIME_PASSED,
+        System.out.printf(NIGHTS_N, Thread.currentThread().getName(), TIME_PASSED,
                 partsWasteDump.getTimePassed() / RobotPartsWasteDump.ONE_NIGHT_LENGTH);
 
         CalculateMaxNumberRobotsToAssemble robotsToAssemble = new CalculateMaxNumberRobotsToAssemble();

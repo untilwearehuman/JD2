@@ -12,11 +12,16 @@ public class RobotPartsWasteDump {
     public static final String NIGHTS = " nights";
     public static final String TIME_PASSED = "TIME PASSED ";
     private volatile int timePassed = 0;
+    private volatile String wastedPart;
     private volatile String collectedPart;
-    private final List<String> partList;
+    private List<String> partList;
 
     public RobotPartsWasteDump(List<String> partList) {
         this.partList = partList;
+    }
+
+    public String getWastedPart() {
+        return wastedPart;
     }
 
     public String getCollectedPart() {
@@ -33,10 +38,10 @@ public class RobotPartsWasteDump {
 
     public synchronized void throwPartToDump() {
         if (timePassed < TIME_OF_100_NIGHTS) {
-            partList.add(ROBOT_PARTS[new Random().nextInt(ROBOT_PARTS.length)]);
-
+            wastedPart = ROBOT_PARTS[new Random().nextInt(ROBOT_PARTS.length)];
+            partList.add(wastedPart);
             timePassed = timePassed + ONE_NIGHT_LENGTH;
-            System.out.println(TIME_PASSED + timePassed / ONE_NIGHT_LENGTH + NIGHTS);
+//            System.out.println(TIME_PASSED + timePassed / ONE_NIGHT_LENGTH + NIGHTS);
         }
         notifyAll();
     }
