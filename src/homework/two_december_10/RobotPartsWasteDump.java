@@ -9,8 +9,6 @@ public class RobotPartsWasteDump {
             "CPU", "RAM", "HDD"};
     public static final int ONE_NIGHT_LENGTH = 100;
     public static final int TIME_OF_100_NIGHTS = 10000;
-    public static final String NIGHTS = " nights";
-    public static final String TIME_PASSED = "TIME PASSED ";
     private volatile int timePassed = 0;
     private volatile String wastedPart;
     private volatile String collectedPart;
@@ -37,28 +35,27 @@ public class RobotPartsWasteDump {
     }
 
     public synchronized void throwPartToDump() {
-        if (timePassed < TIME_OF_100_NIGHTS) {
-            wastedPart = ROBOT_PARTS[new Random().nextInt(ROBOT_PARTS.length)];
-            partList.add(wastedPart);
-            timePassed = timePassed + ONE_NIGHT_LENGTH;
-//            System.out.println(TIME_PASSED + timePassed / ONE_NIGHT_LENGTH + NIGHTS);
-        }
-        notifyAll();
+            if (timePassed < TIME_OF_100_NIGHTS) {
+                wastedPart = ROBOT_PARTS[new Random().nextInt(ROBOT_PARTS.length)];
+                partList.add(wastedPart);
+                timePassed = timePassed + ONE_NIGHT_LENGTH;
+            }
+            notifyAll();
     }
 
     public synchronized void takePartFromDump() {
-        if (timePassed < TIME_OF_100_NIGHTS) {
-            while (getPartList().size() < 1) {
+            if (timePassed < TIME_OF_100_NIGHTS) {
+                while (getPartList().size() < 1) {
 
-                try {
-                    wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    try {
+                        wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
                 }
-
+                collectedPart = partList.get(0);
+                partList.remove(0);
             }
-            collectedPart = partList.get(0);
-            partList.remove(0);
-        }
     }
 }
