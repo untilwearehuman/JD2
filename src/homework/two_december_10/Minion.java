@@ -32,8 +32,6 @@ public class Minion implements Runnable {
         while (partsWasteDump.getTimePassed() < RobotPartsWasteDump.TIME_OF_100_NIGHTS) {
             try {
 
-                Thread.sleep(SLEEP_MILLIS);
-
                 if (partsWasteDump.getPartList().size() >= PARTS_BOUND) {
                     for (int i = 0; i < (new Random().nextInt(BOUND) + 1); i++) {
                         partsWasteDump.takePartFromDump();
