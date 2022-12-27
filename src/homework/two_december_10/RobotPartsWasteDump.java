@@ -14,7 +14,7 @@ public class RobotPartsWasteDump {
     private volatile int timePassed = 0;
     private volatile String wastedPart;
     private volatile String collectedPart;
-    private List<String> partList;
+    private final List<String> partList;
 
     public RobotPartsWasteDump(List<String> partList) {
         this.partList = partList;
